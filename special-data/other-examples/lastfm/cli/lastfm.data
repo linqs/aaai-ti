@@ -1,0 +1,23 @@
+predicates:
+    user/1: closed
+    item/1: closed
+    rated/2: closed
+    sim_pearson_users/2: closed
+    sim_pearson_items/2: closed
+    item_pearson_rating/2: closed
+    rating/2: open
+
+observations:
+    user: ../data/lastfm/0/eval/user_obs.txt
+    item: ../data/lastfm/0/eval/item_obs.txt
+    rated: ../data/lastfm/0/eval/rated_obs.txt
+    sim_pearson_users: ../data/lastfm/0/eval/sim_pearson_users_obs.txt
+    sim_pearson_items: ../data/lastfm/0/eval/sim_pearson_items_obs.txt
+    item_pearson_rating: ../data/lastfm/0/eval/item_pearson_rating_obs.txt
+    rating: ../data/lastfm/0/eval/rating_obs.txt
+
+targets:
+    rating: ../data/lastfm/0/eval/rating_targets.txt
+
+truth:
+    rating: ../data/lastfm/0/eval/rating_truth.txt
