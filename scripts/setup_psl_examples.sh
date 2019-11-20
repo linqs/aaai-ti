@@ -1,10 +1,15 @@
 #!/bin/bash
 
+# Fetch all the PSL examples and modify the CLI configuration for these experiments.
+# Note that you can change the version of PSL used with the PSL_VERSION option here.
+
 readonly BASE_DIR=$(realpath "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/..)
 
 readonly PSL_EXAMPLES_DIR="${BASE_DIR}/psl-examples"
 readonly PSL_EXAMPLES_REPO='https://github.com/linqs/psl-examples.git'
 readonly PSL_EXAMPLES_BRANCH='develop'
+
+readonly PSL_VERSION='2.2.0-SNAPSHOT'
 
 readonly SPECIAL_DATA_DIR="${BASE_DIR}/special-data"
 
@@ -44,7 +49,7 @@ function special_fixes() {
 
 # Common to all examples.
 function standard_fixes() {
-    for exampleDir in `find ${PSL_EXAMPLES_DIR} -maxdepth 1 -mindepth 1 -type d -not -name '.git'`; do
+    for exampleDir in `find ${PSL_EXAMPLES_DIR} -maxdepth 1 -mindepth 1 -type d -not -name '.*'`; do
         local baseName=`basename ${exampleDir}`
         local options=''
 
@@ -61,6 +66,9 @@ function standard_fixes() {
 
             # Increase memory allocation.
             sed -i "s/java -jar/java -Xmx${JAVA_MEM_GB}G -Xms${JAVA_MEM_GB}G -jar/" run.sh
+
+            # Set the PSL version.
+            sed -i "s/^readonly PSL_VERSION='.*'$/readonly PSL_VERSION='${PSL_VERSION}'/" run.sh
 
             # Disable weight learning.
             sed -i 's/^\(\s\+\)runWeightLearning/\1# runWeightLearning/' run.sh
