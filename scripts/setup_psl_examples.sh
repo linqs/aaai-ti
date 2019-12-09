@@ -9,7 +9,7 @@ readonly PSL_EXAMPLES_DIR="${BASE_DIR}/psl-examples"
 readonly PSL_EXAMPLES_REPO='https://github.com/linqs/psl-examples.git'
 readonly PSL_EXAMPLES_BRANCH='develop'
 
-readonly PSL_VERSION='2.2.0-SNAPSHOT'
+readonly PSL_VERSION='2.2.1'
 
 readonly SPECIAL_DATA_DIR="${BASE_DIR}/special-data"
 

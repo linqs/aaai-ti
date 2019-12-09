@@ -109,7 +109,7 @@ function fetch_psl() {
       local snapshotJARPath="$HOME/.m2/repository/org/linqs/psl-cli/${PSL_VERSION}/psl-cli-${PSL_VERSION}.jar"
       cp "${snapshotJARPath}" "${JAR_PATH}"
    else
-      local remoteJARURL="https://linqs-data.soe.ucsc.edu/maven/repositories/psl-releases/org/linqs/psl-cli/${PSL_VERSION}/psl-cli-${PSL_VERSION}.jar"
+      local remoteJARURL="https://repo1.maven.org/maven2/org/linqs/psl-cli/${PSL_VERSION}/psl-cli-${PSL_VERSION}.jar"
       fetch_file "${remoteJARURL}" "${JAR_PATH}" 'psl-jar'
    fi
 }
